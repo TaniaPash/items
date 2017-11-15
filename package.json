@@ -1,0 +1,23 @@
+{
+  "name": "rechi_front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/Liovareg/rechi_front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Liovareg/rechi_front/issues"
+  },
+  "homepage": "https://gitlab.com/Liovareg/rechi_front#README",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "bootstrap-css": "^4.0.0-alpha.5"
+  }
+}
