@@ -1,11 +1,12 @@
 <html ng-app="rechi">
 <script src="../node_modules/angular/angular.js"></script>
 <script src="app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-<!-- <link href="../node_modules/bootstrap-css/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-<!-- <link href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
-<!-- <script src="../node_modules/bootstrap-css/dist/js/bootstrap.min.js"></script> -->
+
 <!-- Controllers -->
 <script src="pages/list/listController.js"></script>
 
@@ -13,28 +14,52 @@
 
 <body>
     <div ng-controller="ListController as listCtrl">
-        <h1>My stuff</h1>
-        <table class="table">
-            <tr ng-repeat="item in listCtrl.data track by $index">
-                <td>{{"No"+ [$index + 1]}}</td>
-                <td>Item Id: {{item.id}}</td>
-                <td>Item name: {{item.name}}</td>
-                <td>Item description: {{item.description}}</td>
+        <h1 align="center">Everything I Own: My {{listCtrl.data.length}} Things</h1>
 
-            </tr>
-        </table>
+        
+        <!-- Add item -->
 
+        <div class="addItemPanel">
+            <button type="button" class="btn btn-default btn-sm" align="left" ng-click="showpanel=true" ng-hide="showme">
+                <span class="glyphicon glyphicon-plus"></span>Add item</button>
+            <h3 ng-show="showpanel">Add item</h3>
+            <form ng-show="showpanel">
+                Item name
+                <input ng-model="listCtrl.newItem.name"> Item description
+                <textarea rows="1" cols="50" ng-model="listCtrl.newItem.description"></textarea>
+                <button type="submit" ng-click="listCtrl.saveItem()">Add</button>
+                <input type="reset" value="Cancel" ng-click="showpanel=false">
 
-        <h1>Add item</h1>
-        <form ng-submit="listCtrl.saveItem()">
-            Item name
-            <input ng-model="listCtrl.newItem.name"> Item description
-            <input ng-model="listCtrl.newItem.description">
-            <button type="submit">Add</button>
-            <button>Cancel</button>
+            </form>
+        </div>
 
-        </form>
+        <!-- List of items -->
 
+        <div class="grid-container">
+            <div ng-repeat="item in listCtrl.data track by $index">
+                
+                <p>{{"No"+ [$index + 1]}}</p>
+                <p class="title" ng-hide="showme">{{item.name}}</p>
+                <p ng-hide="showme">{{item.description}}</p>
+                <p ng-hide="showme">Item Id:{{item.id}}</p>
+                <!-- Edit button -->
+                <button type="submit" ng-click="listCtrl.edit(item, $index); showme=true" ng-hide="showme">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <!-- Delete mode -->
+                <button type="submit" ng-click="listCtrl.deleteItem($index)" ng-hide="showme">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+                <!-- Edit mode -->
+                <div>
+                    <input ng-model="item.name" ng-show="showme">
+                    <textarea rows="3" cols="22.95" ng-model="item.description" ng-show="showme"></textarea>
+                    
+                </div>
+                <button type="submit" ng-click="listCtrl.saveUpdatedItem($index); showme=false" ng-show="showme">Save</button>
+                <button type="submit" ng-click="listCtrl.cancel($index); showme=false" ng-show="showme">Cancel</button>
+            </div>
+        </div>
     </div>
 </body>
 
