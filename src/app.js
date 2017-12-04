@@ -1,1 +1,3 @@
-angular.module('rechi', [])
+angular.module('rechi', ['ui.router'])
+
+

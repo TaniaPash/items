@@ -1,6 +1,8 @@
 <html ng-app="rechi">
 <script src="../node_modules/angular/angular.js"></script>
+<script src="../node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
 <script src="app.js"></script>
+<script src="app.routes.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -9,58 +11,13 @@
 
 <!-- Controllers -->
 <script src="pages/list/listController.js"></script>
-
+<script src="pages/login/loginController.js"></script>
+<script src="services/authentification.js"></script>
 <!-- Body -->
-
 <body>
-    <div ng-controller="ListController as listCtrl">
-        <h1 align="center">Everything I Own: My {{listCtrl.data.length}} Things</h1>
-
-        
-        <!-- Add item -->
-
-        <div class="addItemPanel">
-            <button type="button" class="btn btn-default btn-sm" align="left" ng-click="showpanel=true" ng-hide="showme">
-                <span class="glyphicon glyphicon-plus"></span>Add item</button>
-            <h3 ng-show="showpanel">Add item</h3>
-            <form ng-show="showpanel">
-                Item name
-                <input ng-model="listCtrl.newItem.name"> Item description
-                <textarea rows="1" cols="50" ng-model="listCtrl.newItem.description"></textarea>
-                <button type="submit" ng-click="listCtrl.saveItem()">Add</button>
-                <input type="reset" value="Cancel" ng-click="showpanel=false">
-
-            </form>
-        </div>
-
-        <!-- List of items -->
-
-        <div class="grid-container">
-            <div ng-repeat="item in listCtrl.data track by $index">
-                
-                <p>{{"No"+ [$index + 1]}}</p>
-                <p class="title" ng-hide="showme">{{item.name}}</p>
-                <p ng-hide="showme">{{item.description}}</p>
-                <p ng-hide="showme">Item Id:{{item.id}}</p>
-                <!-- Edit button -->
-                <button type="submit" ng-click="listCtrl.edit(item, $index); showme=true" ng-hide="showme">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-                <!-- Delete mode -->
-                <button type="submit" ng-click="listCtrl.deleteItem($index)" ng-hide="showme">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-                <!-- Edit mode -->
-                <div>
-                    <input ng-model="item.name" ng-show="showme">
-                    <textarea rows="3" cols="22.95" ng-model="item.description" ng-show="showme"></textarea>
-                    
-                </div>
-                <button type="submit" ng-click="listCtrl.saveUpdatedItem($index); showme=false" ng-show="showme">Save</button>
-                <button type="submit" ng-click="listCtrl.cancel($index); showme=false" ng-show="showme">Cancel</button>
-            </div>
-        </div>
-    </div>
+    <button ui-sref="logIn">LogIn</button>
+    <button ui-sref="list">Direct me to item's list!</button>
+    <ui-view></ui-view>
 </body>
 
 </html>
