@@ -1,11 +1,12 @@
 angular.module('rechi')
-  .controller('ListController', function ($http) {
+  .controller('ListController', ['$http', 'cloudinary', 'Upload', function ($http, cloudinary, Upload) {
     var $ctrl = this;
     $ctrl.newItem = {
       name: " ",
       description: " ",
+      imageUrl: " "     
     };
-    $ctrl.itemCopy = [];
+    $ctrl.itemCopy = [];  
 
     $http.get('https://rechi.herokuapp.com/items')
       .then(function successCallback(response) {
@@ -20,9 +21,9 @@ angular.module('rechi')
       $http.post('https://rechi.herokuapp.com/items', $ctrl.newItem)
         .then(function successCallback(response) {
           $ctrl.data.push(response.data);
-          $ctrl.newItem = {};
           console.log(response);
-        }, function errorCallback(response) { console.log("Error2", response) })
+        }, function errorCallback(response) { console.log("Error2", response) });
+
     };
 
     $ctrl.deleteItem = function (index) {
@@ -48,4 +49,17 @@ angular.module('rechi')
       $ctrl.data[index] = $ctrl.itemCopy[index];
       console.log("the changes were Canceled!");
     }
-  });
+
+    $ctrl.uploadTest = function (file) {
+
+      file.upload = Upload.upload({
+        url: 'https://api.cloudinary.com/v1_1/tania/image/upload',
+        data: {
+          file: file
+        },
+      }).then(function successCallback(response) {
+        console.log(response);
+        console.log("OK!")
+      }, function errorCallback(response) { console.log("Error88", response) })
+    }
+  }]);
