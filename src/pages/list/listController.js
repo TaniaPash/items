@@ -4,9 +4,9 @@ angular.module('rechi')
     $ctrl.newItem = {
       name: " ",
       description: " ",
-      imageUrl: " "     
+      imageUrl: " "
     };
-    $ctrl.itemCopy = [];  
+    $ctrl.itemCopy = [];
 
     $http.get('https://rechi.herokuapp.com/items')
       .then(function successCallback(response) {
@@ -51,8 +51,7 @@ angular.module('rechi')
     }
 
     $ctrl.uploadTest = function (file) {
-
-      file.upload = Upload.upload({
+      Upload.upload({
         url: 'https://api.cloudinary.com/v1_1/tania/image/upload',
         data: {
           file: file
