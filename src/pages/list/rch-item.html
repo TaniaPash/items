@@ -1,0 +1,23 @@
+<div>
+    <p>{{"No"+ [$index + 1]}}</p>
+    <img ng-src="{{item.imageUrl}}" style="width:50px;height:60px;" />
+    <p class="title" ng-hide="showme">{{item.name}}</p>
+    <p ng-hide="showme">{{item.description}}</p>
+    <p ng-hide="showme">Item Id:{{item.id}}</p>
+    <!-- Edit button -->
+    <button type="submit" ng-click="$ctrl.edit(item, $index); showme=true" ng-hide="showme">
+        <span class="glyphicon glyphicon-pencil"></span>
+    </button>
+    <!-- Delete mode -->
+    <button type="submit" ng-click="$ctrl.deleteItem($index)" ng-hide="showme">
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <!-- Edit mode -->
+    <div>
+        <input ng-model="item.name" ng-show="showme">
+        <textarea rows="3" cols="22.95" ng-model="item.description" ng-show="showme"></textarea>
+    </div>
+    <button type="submit" ng-click="$ctrl.saveUpdatedItem($index); showme=false" ng-show="showme">Save</button>
+    <button type="submit" ng-click="$ctrl.cancel($index); showme=false" ng-show="showme">Cancel</button>
+</div>
+</div>

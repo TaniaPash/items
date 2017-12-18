@@ -1,3 +1,3 @@
-angular.module('rechi', ['ui.router', 'ngFileUpload', 'angular-cloudinary' ])
+angular.module('rechi', ['ui.router', 'ngFileUpload'])
 
 
