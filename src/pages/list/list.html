@@ -7,52 +7,17 @@
         <button type="button" class="btn btn-default btn-sm" align="left" ng-click="showpanel=true" ng-hide="showme">
             <span class="glyphicon glyphicon-plus"></span>Add item</button>
         <h3 ng-show="showpanel">Add item</h3>
-        <form ng-show="showpanel">
-            Item name
+        <form ng-show="showpanel">Item name
             <input ng-model="$ctrl.newItem.name"> Item description
             <textarea rows="1" cols="50" ng-model="$ctrl.newItem.description"></textarea>
-            <button class="button" ngf-select="" ng-model="file" name = "file">Select</button>
-            <!-- <input ng-model="$ctrl.newItem.imageUrl" > -->
-            <button class="button" ng-click = "$ctrl.uploadTest (file)"> Upload</button>
-
-            Image:
-            <img ng-src="{{$ctrl.newItem.imageUrl}}" style="width:50px;height:60px;"/>
-            <!-- <img ngf-thumbnail = {{pic}} > -->
-            <!-- <cl-image public-id = {{$ctrl.newItem.imageUrl}} style="width:50px;height:60px;"></cl-image> -->
-
+            <button ngf-select ng-model="$ctrl.newImage">Select</button>
             <button type="submit" ng-click="$ctrl.saveItem()">Add</button>
             <input type="reset" value="Cancel" ng-click="showpanel=false">
-
         </form>
     </div>
 
     <!-- List of items -->
-
-    <div class="grid-container">
-        <div ng-repeat="item in $ctrl.data track by $index">
-
-            <p>{{"No"+ [$index + 1]}}</p>
-            <img ng-src="{{item.imageUrl}}" style="width:50px;height:60px;"/>
-            <!-- <cl-image public-id="{{item.imageUrl}}" style="width:50px;height:60px;"></cl-image> -->
-            <p class="title" ng-hide="showme">{{item.name}}</p>
-            <p ng-hide="showme">{{item.description}}</p>
-            <p ng-hide="showme">Item Id:{{item.id}}</p>
-            <!-- Edit button -->
-            <button type="submit" ng-click="$ctrl.edit(item, $index); showme=true" ng-hide="showme">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>
-            <!-- Delete mode -->
-            <button type="submit" ng-click="$ctrl.deleteItem($index)" ng-hide="showme">
-                <span class="glyphicon glyphicon-remove"></span>
-            </button>
-            <!-- Edit mode -->
-            <div>
-                <input ng-model="item.name" ng-show="showme">
-                <textarea rows="3" cols="22.95" ng-model="item.description" ng-show="showme"></textarea>
-
-            </div>
-            <button type="submit" ng-click="$ctrl.saveUpdatedItem($index); showme=false" ng-show="showme">Save</button>
-            <button type="submit" ng-click="$ctrl.cancel($index); showme=false" ng-show="showme">Cancel</button>
-        </div>
+    <rch-item ng-repeat="item in $ctrl.data track by $index" item = "item"></rch-item>
     </div>
+    <rch-test></rch-test>
 </div>
