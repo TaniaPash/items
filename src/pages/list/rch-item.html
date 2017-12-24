@@ -1,6 +1,6 @@
-<div>
+<div align="center">
     <p>{{"No"+ [$index + 1]}}</p>
-    <img ng-src="{{item.imageUrl}}" style="width:50px;height:60px;" />
+    <img ng-src="{{item.imageUrl}}" style="width:50px;height:60px;" /> 
     <p class="title" ng-hide="showme">{{item.name}}</p>
     <p ng-hide="showme">{{item.description}}</p>
     <p ng-hide="showme">Item Id:{{item.id}}</p>
@@ -19,5 +19,4 @@
     </div>
     <button type="submit" ng-click="$ctrl.saveUpdatedItem($index); showme=false" ng-show="showme">Save</button>
     <button type="submit" ng-click="$ctrl.cancel($index); showme=false" ng-show="showme">Cancel</button>
-</div>
 </div>

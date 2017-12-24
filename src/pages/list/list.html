@@ -17,7 +17,10 @@
     </div>
 
     <!-- List of items -->
-    <rch-item ng-repeat="item in $ctrl.data track by $index" item = "item"></rch-item>
+    <div class = "grid-container">
+        <rch-item ng-repeat="item in $ctrl.data track by $index" item="item" $ctrl ="$ctrl" $index = "$index"></rch-item>
+        <!-- <rch-test></rch-test> -->
     </div>
-    <rch-test></rch-test>
+   
+
 </div>
