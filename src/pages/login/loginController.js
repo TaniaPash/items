@@ -1,6 +1,6 @@
 angular.module('rechi')
-    .controller('LoginController', ['$scope','$http', '$state', 'AuthenticationService',
-     function ($scope, $http, $state, AuthenticationService) {
+    .controller('LoginController', ['$scope','$http', '$state', 'AuthenticationService', '$window',
+     function ($scope, $http, $state, AuthenticationService, $window) {
         var $ctrl = this;
         $ctrl.user = {
             email: "",

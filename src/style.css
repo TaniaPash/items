@@ -5,6 +5,7 @@
     grid-template-columns: 300px 300px 300px 300px;
     grid-gap: 15px;
     background-color: whitesmoke;
+    border: 1px solid #c3c3c3;
     padding: 10px;
     align-items: center;
     margin-right: 50px;
@@ -16,7 +17,7 @@
     text-align: center;
     padding:20px 0;
     font-size: 20px;
-    border: 1px solid #c3c3c3;
+    border: 1px solid #753131;
     align-items: center
   }
 
