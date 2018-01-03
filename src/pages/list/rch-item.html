@@ -1,11 +1,16 @@
-<div align="center">
-    <p>{{"No"+ [$index + 1]}}</p>
-    <img ng-src="{{item.imageUrl}}" style="width:50px;height:60px;" /> 
-    <p class="title" ng-hide="showme">{{item.name}}</p>
-    <p ng-hide="showme">{{item.description}}</p>
-    <p ng-hide="showme">Item Id:{{item.id}}</p>
+<div class="list-group-item col-xs-4" align="center">
+    <p>{{"No"+ [$parent.$index + 1]}}</p>
+    <img ng-src="{{$ctrl.item.imageUrl}}" alt="itemImage" class= "itemImage"/>
+    <br>
+    <br>
+    <h4 class="title" ng-hide="showme">
+        <strong>{{$ctrl.item.name}}</strong>
+    </h4>
+    <p ng-hide="showme">
+        <em>{{$ctrl.item.description}}</em>
+    </p>
     <!-- Edit button -->
-    <button type="submit" ng-click="$ctrl.edit(item, $index); showme=true" ng-hide="showme">
+    <button type="submit" ng-click="$ctrl.edit(item,$index); showme=true" ng-hide="showme">
         <span class="glyphicon glyphicon-pencil"></span>
     </button>
     <!-- Delete mode -->
@@ -14,9 +19,26 @@
     </button>
     <!-- Edit mode -->
     <div>
-        <input ng-model="item.name" ng-show="showme">
-        <textarea rows="3" cols="22.95" ng-model="item.description" ng-show="showme"></textarea>
+        <form class="form-horizontal" ng-show="showme">
+            <!-- <h3 class="col-sm-offset-2 col-sm-10">Add new item</h3> -->
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="pwd">Item name</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter name of item" name="itemName" ng-model="$ctrl.item.name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="pwd">Item description</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter description of item" name="pwd" ng-model="$ctrl.item.description">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-10">
+                    <button type="submit" ng-click="$ctrl.saveUpdatedItem($index); showme=false" ng-show="showme">Save</button>
+                    <button type="submit" ng-click="$ctrl.cancel($index); showme=false" ng-show="showme">Cancel</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <button type="submit" ng-click="$ctrl.saveUpdatedItem($index); showme=false" ng-show="showme">Save</button>
-    <button type="submit" ng-click="$ctrl.cancel($index); showme=false" ng-show="showme">Cancel</button>
 </div>

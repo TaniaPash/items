@@ -1,65 +1,38 @@
-
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 300px 300px 300px 300px;
-    grid-gap: 15px;
-    background-color: whitesmoke;
-    border: 1px solid #c3c3c3;
-    padding: 10px;
-    align-items: center;
-    margin-right: 50px;
-    margin-left: 50px;
-    
-  }
-  .grid-container>div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding:20px 0;
-    font-size: 20px;
-    border: 1px solid #753131;
-    align-items: center
-  }
-
-  .addItemPanel {
-    margin-left: 50px;
-    vertical-align: middle;
-  }
-
-
-/* ul li {
-    width:20em;
-    float:left;
-    list-style-type: none;
-    margin: 10;
-    padding: 10;
-    }
-
-#p {
-    background-color:whitesmoke 
-}
-        
-#title {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    line-height: 1;
-    text-align: center;
+body, html {
+    height: 100%;    
+    background: url("https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg")
+    top right no-repeat;
+    background-color: white;
 }
 
-#o {
-    margin: 2;
-    padding: 0.1;
+  .jumbotron {
+    padding-top: 10px;
+    padding-bottom: 100px;
+    margin-bottom: 0px;
+    margin-top: 60;
+    margin-bottom: 10;
+    background-color:rgba(198, 232, 227, 0.33);
+    background: white url("https://i.imgur.com/c5XJsYW.jpg") left no-repeat;
+  }
+
+  .itemImage {
+    width:150px; 
+    height:150px;
+    border-radius: 100%;
+    opacity: 0.85;
+  }
+
+  .itemImage:hover {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
-#itemId {
-    color: #111;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    line-height: 1;
-    text-align: left;
-} */
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px 10px 10px;
+    margin-bottom: -1px;
+    background-color: rgba(255, 255, 255, 0.87);
+    border: 1px solid #ddd;
+    height:400px;
+}

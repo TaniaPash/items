@@ -1,7 +1,7 @@
 angular.module('rechi')
-.directive('rchTest', function () {
-    return {
-        restrict: 'E',
+.component('rchTest', {
+    
+        
         templateUrl: 'pages/list/rch-test.html'
-    }
+    
 });

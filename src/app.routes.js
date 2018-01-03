@@ -16,10 +16,17 @@ angular.module('rechi')
             controllerAs: '$ctrl'
         }
 
-
+        var registration = {
+            name: 'registration',
+            url: '/reg',
+            templateUrl: 'pages/registration/registration.html',
+            controller: 'RegController',
+            controllerAs: '$ctrl'
+        }
 
         $stateProvider.state(logIn);
         $stateProvider.state(list);
+        $stateProvider.state(registration)
 
 
     });

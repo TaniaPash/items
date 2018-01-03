@@ -10,24 +10,44 @@
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="../node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+<script src="../node_modules/angular-component/dist/angular-component.js"></script>
 
 <!-- Controllers -->
 <script src="pages/list/listController.js"></script>
 <script src="pages/login/loginController.js"></script>
+<script src="pages/registration/registrationController.js"></script>
 <!-- Services -->
 <script src="services/authentification.js"></script>
 <script src="app.config.js"></script>
 
-  <!-- Directives -->
-  <script src="directives/rchItem.js"></script>
-  <script src="directives/rchTest.js"></script>
+<!-- Directives -->
+<script src="directives/rchItem.js"></script>
+<!-- <script src="directives/rchTest.js"></script> -->
 
 
 <!-- Body -->
+
 <body>
-    <button ui-sref="logIn">LogIn</button>
-    <button ui-sref="list">Direct me to item's list!</button>
+  <div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <!-- btn HOME needed to be fixed with size and align -->
+      <a class="btn btn-default" align="right" href="#">
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
+      <button type="button" class="btn btn-default" ui-sref="logIn">Log In</button>
+      <button type="button" class="btn btn-default" ui-sref="registration">Sign Up</button>
+    </nav>
+  </div>
+  <div class="jumbotron">
+    <!-- <div style="color:rgb(47, 14, 78)" > -->
+    <!-- <p>
+        <em>this application can be used for composing the list of your own stuff</em>
+      </p> -->
+    <!-- </div> -->
+  </div>
+  <div>
     <ui-view></ui-view>
+  </div>
 </body>
 
 </html>

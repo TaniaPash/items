@@ -7,8 +7,6 @@ angular.module('rechi')
       imageUrl: "",
     };
 
-
-
     $ctrl.newImage = null;
     $ctrl.itemCopy = [];
     console.log('List Controller0', $ctrl);
@@ -47,7 +45,7 @@ angular.module('rechi')
         }, function errorCallback(response) { console.log("Error3: Item was not deleted!", response) })
     };
 
-    $ctrl.saveUpdatedItem = function (index) {
+           $ctrl.saveUpdatedItem = function (index) {
       $http.put('https://rechi.herokuapp.com/items/' + $ctrl.data[index].id, $ctrl.data[index])
         .then(function successCallback(response) {
           console.log("Item was udated!");
