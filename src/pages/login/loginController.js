@@ -6,7 +6,16 @@ angular.module('rechi')
                 email: "",
                 password: ""
             };
+            $ctrl.error = AuthenticationService.error;
             $ctrl.submit = function () {
-                AuthenticationService.checkLog($ctrl.user);
+                   AuthenticationService.checkLog($ctrl.user)
+                   .catch(function(error) {
+                    console.log("Failed!", error);
+                    $ctrl.error = "Email or password is incorrect";
+                  });
+                $ctrl.user = {
+                    email: "",
+                    password: ""
+                };
             }
         }]);

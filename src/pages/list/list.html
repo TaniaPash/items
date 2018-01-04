@@ -52,7 +52,10 @@
 
 <!-- List of items -->
 <div>
-    <rch-item ng-repeat="item in $ctrl.data  | filter:searchText " item="item" $ctrl="$ctrl" $index="$index"></rch-item>
+    <rch-item ng-repeat="item in $ctrl.data  | filter:searchText " item="item" itemCopy="itemCopy"
+     index="$index" on-delete="$ctrl.deleteItem($index)" 
+     on-update="$ctrl.saveUpdatedItem($index)"
+     on-cancel="$ctrl.cancel($index)" on-edit="$ctrl.edit(item,$index)"></rch-item>
 </div>
 <!-- test directive or component <rch-test></rch-test> -->
 </div>

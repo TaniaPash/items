@@ -1,21 +1,29 @@
 <div>
-    <form class="form-horizontal">
-        <div class="form-group">
+    <form class="form-horizontal" name = "form" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
             <label class="control-label col-sm-2" for="email">Email:</label>
             <div class="col-sm-4">
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" ng-model="$ctrl.user.email">
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" class="form-control" ng-model="$ctrl.user.email" required>
+                <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">
+                    Email is required</span>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group"ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
             <label class="control-label col-sm-2" for="pwd">Password:</label>
             <div class="col-sm-4">
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" ng-model="$ctrl.user.password">
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" ng-model="$ctrl.user.password" required>
+                <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">
+                        Password is required</span>
+            
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default" ng-click="$ctrl.submit()">Submit</button>
                 <input type="reset" class="btn btn-default" value="Cancel">
+               <br>
+                <div><h3 class="text-danger"><strong>{{$ctrl.error}}</strong></h3>
+                </div>
             </div>
         </div>
     </form>

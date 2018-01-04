@@ -1,11 +1,24 @@
 angular.module('rechi')
+   // .controller('RechiItemController', ['$http', function ($http) {
+     //   var $ctrl = this;
+      //  $ctrl.delete = function ($index) {
+        //    $ctrl.onDelete($index);
+    //    };
+       // console.log ("A", $ctrl);
+   // }])
+
     .component('rchItem', {
-            templateUrl: 'pages/list/rch-item.html',
-            bindings: {
-               item:'=',
-               $ctrl: '=',
-               $index: '='
-             }
+        templateUrl: 'pages/list/rch-item.html',
+      //  controller: "RechiItemController",
+        bindings: {
+            item: '<',
+            itemCopy:'<',
+            index: '<',
+            onDelete: '&',
+            onUpdate: '&',
+            onCancel:'&',
+            onEdit:'&'
+        },
     });
 
     // .directive('rchItem', function () {

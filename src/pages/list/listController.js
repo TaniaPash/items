@@ -6,13 +6,9 @@ angular.module('rechi')
       description: " ",
       imageUrl: "",
     };
-
     $ctrl.newImage = null;
     $ctrl.itemCopy = [];
-    console.log('List Controller0', $ctrl);
-
     $http.get('https://rechi.herokuapp.com/items', {
-      // config related to authorization
     })
       .then(function successCallback(response) {
         $ctrl.data = response.data;
@@ -34,7 +30,7 @@ angular.module('rechi')
             $ctrl.data.push(response.data);
             console.log(response);
           }, function errorCallback(response) { console.log("Error2", response) });
-      }, function errorCallback(response) { console.log("ErrorCL", response) })
+      }, function errorCallback(response) { console.log("ErrorCL", response) });
     };
 
     $ctrl.deleteItem = function (index) {
@@ -45,7 +41,7 @@ angular.module('rechi')
         }, function errorCallback(response) { console.log("Error3: Item was not deleted!", response) })
     };
 
-           $ctrl.saveUpdatedItem = function (index) {
+    $ctrl.saveUpdatedItem = function (index) {
       $http.put('https://rechi.herokuapp.com/items/' + $ctrl.data[index].id, $ctrl.data[index])
         .then(function successCallback(response) {
           console.log("Item was udated!");
@@ -60,7 +56,6 @@ angular.module('rechi')
       $ctrl.data[index] = $ctrl.itemCopy[index];
       console.log("the changes were Canceled!");
     }
-
 
     $ctrl.uploadTest = function (file) {
       Upload.upload({
