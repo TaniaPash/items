@@ -16,8 +16,9 @@ angular.module('rechi')
             index: '<',
             onDelete: '&',
             onUpdate: '&',
+            onEdit:'&',
             onCancel:'&',
-            onEdit:'&'
+            
         },
     });
 

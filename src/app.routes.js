@@ -1,5 +1,11 @@
 angular.module('rechi')
     .config(function ($stateProvider) {
+
+        var home = {
+            name: 'home',
+            url: '/',
+        };
+
         var logIn = {
             name: 'logIn',
             url: '/login',
@@ -26,7 +32,7 @@ angular.module('rechi')
 
         $stateProvider.state(logIn);
         $stateProvider.state(list);
-        $stateProvider.state(registration)
-
+        $stateProvider.state(registration);
+        $stateProvider.state(home);
 
     });

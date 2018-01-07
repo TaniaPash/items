@@ -29,6 +29,11 @@ angular.module('rechi')
           .then(function successCallback(response) {
             $ctrl.data.push(response.data);
             console.log(response);
+            $ctrl.newItem = {
+              name: " ",
+              description: " ",
+              imageUrl: "",
+            };
           }, function errorCallback(response) { console.log("Error2", response) });
       }, function errorCallback(response) { console.log("ErrorCL", response) });
     };
@@ -50,11 +55,14 @@ angular.module('rechi')
 
     $ctrl.edit = function (item, index) {
       $ctrl.itemCopy[index] = angular.copy(item);
+      console.log ($ctrl.itemCopy[index])
     }
 
     $ctrl.cancel = function (index) {
+      // $ctrl.itemCopy[index] = angular.copy(item);
       $ctrl.data[index] = $ctrl.itemCopy[index];
-      console.log("the changes were Canceled!");
+     // $ctrl.data[index] = $ctrl.itemCopy[index];
+      console.log("the changes were Canceled!",$ctrl.data[index], $ctrl.itemCopy[index] );
     }
 
     $ctrl.uploadTest = function (file) {

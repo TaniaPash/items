@@ -36,7 +36,12 @@
                 <input type="reset" class="btn btn-default" value="Cancel" ng-click="showpanel=false">
             </div>
         </div>
+        <div class="col-sm-offset-2 col-sm-10">Picture:
+            <img width = "60" ngf-thumbnail="$ctrl.newImage">
+            {{$ctrl.newImage.name}}
+        </div>
     </form>
+    
 </div>
 
 <!-- Search item-->

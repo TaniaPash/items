@@ -10,7 +10,7 @@
         <em>{{$ctrl.item.description}}</em>
     </p>
     <!-- Edit button -->
-    <button type="submit" ng-click="$ctrl.edit(item,$index); showme=true" ng-hide="showme">
+    <button type="submit" ng-click="$ctrl.onEdit(item,$index); showme=true" ng-hide="showme">
         <span class="glyphicon glyphicon-pencil"></span>
     </button>
     <!-- Delete mode -->
@@ -24,7 +24,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-4" for="pwd">Item name</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="pwd" placeholder="Enter name of item" name="itemName" ng-model="$ctrl.item.name">
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter name of item" name="itemName" 
+                    ng-model="$ctrl.item.name">
                 </div>
             </div>
             <div class="form-group">
@@ -36,7 +37,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-1 col-sm-10">
                     <button type="submit" ng-click="$ctrl.onUpdate($index); showme=false" ng-show="showme">Save</button>
-                    <button type="button" ng-click="$ctrl.onCancel(); showme=false" ng-show="showme">Cancel</button>
+                    <button type="button" ng-click="$ctrl.onCancel(item,$index); showme=false" ng-show="showme">Cancel</button>
                 </div>
             </div>
         </form>
