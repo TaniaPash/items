@@ -2,3 +2,4 @@ node_modules
 target
 bower_components
 .idea
+dist
