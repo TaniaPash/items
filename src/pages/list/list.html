@@ -1,66 +1,48 @@
 <div>
-    <h2 align="center">
-        <em>My {{$ctrl.data.length}} things list</em>
-    </h2>
-</div>
-
-<div class="row">
-    <!-- Add item  button-->
-    <div class="col-sm-offset-1 col-sm-10" ng-click="showpanel=true" ng-hide="showpanel">
-        <button type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-plus">
-            </span>
-            Add item
-        </button>
+    <div>
+        <h2 align="center" id="title_eng">
+            <em>My {{$ctrl.data.length}} things list</em>
+        </h2>
     </div>
     <br>
-    <!-- Add item  form-->
-    <form class="form-horizontal" ng-show="showpanel">
-        <h3 class="col-sm-offset-2 col-sm-10">Add new item</h3>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="pwd">Item name</label>
+    <div class="container-fluid">
+        <!-- class="row col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-6"> -->
+        <div class= "">
+            <!-- Search item-->
+            <!-- <div class="col-sm-offset-1 col-sm-10"> -->
+            <form class="form-horizontal col-sm-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                    <input ng-model="search" class="form-control">
+                </div>
+            </form>
+            <!-- Add item  button-->
+            <button type="button" class="btn btn-default" align="right" ng-click="$ctrl.open()">
+                    <span class="glyphicon glyphicon-plus">
+                    </span>
+                    {{'Add_btn' | translate}}</button>
+                </div>
+            <br>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="pwd" placeholder="Enter name of item" name="itemName" ng-model="$ctrl.newItem.name">
+                    <button class="btn btn-default btn-md" ng-click="$ctrl.tog()">
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                        </button>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="pwd">Item description</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="pwd" placeholder="Enter description of item" name="pwd" ng-model="$ctrl.newItem.description">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button ngf-select ng-model="$ctrl.newImage" class="btn btn-default">Select</button>
-                <button type="submit" class="btn btn-default" ng-click="$ctrl.saveItem()">Add</button>
-                <input type="reset" class="btn btn-default" value="Cancel" ng-click="showpanel=false">
-            </div>
-        </div>
-        <div class="col-sm-offset-2 col-sm-10">Picture:
-            <img width = "60" ngf-thumbnail="$ctrl.newImage">
-            {{$ctrl.newImage.name}}
-        </div>
-    </form>
-    
-</div>
+            
 
-<!-- Search item-->
-<br>
-<div class="col-sm-offset-1 col-sm-10">
-    <button type="button" class="btn btn-default">
-        <span class="glyphicon glyphicon-search"></span> Search
-    </button>
-    <input ng-model="searchText">
+
+       
+    </div>
+</div>
 </div>
 <br>
-<br>
-
 <!-- List of items -->
-<div>
-    <rch-item ng-repeat="item in $ctrl.data  | filter:searchText " item="item" itemCopy="itemCopy"
-     index="$index" on-delete="$ctrl.deleteItem($index)" 
-     on-update="$ctrl.saveUpdatedItem($index)"
-     on-cancel="$ctrl.cancel($index)" on-edit="$ctrl.edit(item,$index)"></rch-item>
-</div>
-<!-- test directive or component <rch-test></rch-test> -->
+<div class="row">
+    <rch-item id="grid" ng-class="{'col-xs-6 col-md-4' : $ctrl.toggle }" ng-repeat="item in $ctrl.data| filterBy: ['name', 'description']: search"
+        item="item" itemCopy="itemCopy" index="$index" on-delete="$ctrl.deleteItem($index)" on-update="$ctrl.saveUpdatedItem($index)"
+        on-cancel="$ctrl.cancel($index)" on-edit="$ctrl.edit(item,$index)">
+    </rch-item>
+
 </div>

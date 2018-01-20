@@ -1,42 +1,18 @@
 angular.module('rechi')
-  .controller('ListController', ['$http', 'Upload', function ($http, Upload) {
+  .controller('ListController', ['$http', 'Upload', '$uibModal', 'GetItemService','usSpinnerService', function
+   ($http, Upload, $uibModal, GetItemService, usSpinnerService) {
+
     var $ctrl = this;
-    $ctrl.newItem = {
-      name: " ",
-      description: " ",
-      imageUrl: "",
-    };
-    $ctrl.newImage = null;
+  
     $ctrl.itemCopy = [];
-    $http.get('https://rechi.herokuapp.com/items', {
-    })
-      .then(function successCallback(response) {
-        $ctrl.data = response.data;
-      }, function errorCallback(response) {
-        console.log('Error during GET /items', response);
+    usSpinnerService.spin();
+    GetItemService.getItems()
+      .then(function successCallback(list) {
+        $ctrl.data = list.data
+      }, function errorCallback(list) {
+        console.log('Error during GET /items', list);
       });
-
     console.log('List Controller', $ctrl);
-
-    $ctrl.saveItem = function () {
-      Upload.upload({
-        url: 'https://api.cloudinary.com/v1_1/hxfnxj17l/upload',
-        data: { file: $ctrl.newImage, upload_preset: 'xi1quxpr' }
-      }).then(function successCallback(response) {
-        console.log(response);
-        $ctrl.newItem.imageUrl = response.data.secure_url;
-        $http.post('https://rechi.herokuapp.com/items', $ctrl.newItem)
-          .then(function successCallback(response) {
-            $ctrl.data.push(response.data);
-            console.log(response);
-            $ctrl.newItem = {
-              name: " ",
-              description: " ",
-              imageUrl: "",
-            };
-          }, function errorCallback(response) { console.log("Error2", response) });
-      }, function errorCallback(response) { console.log("ErrorCL", response) });
-    };
 
     $ctrl.deleteItem = function (index) {
       $http.delete('https://rechi.herokuapp.com/items/' + $ctrl.data[index].id)
@@ -53,16 +29,19 @@ angular.module('rechi')
         }, function errorCallback(response) { console.log("Error4", response) })
     };
 
+$ctrl.catch = function (){
+
+};
+
+
     $ctrl.edit = function (item, index) {
       $ctrl.itemCopy[index] = angular.copy(item);
-      console.log ($ctrl.itemCopy[index])
+      console.log($ctrl.itemCopy[index])
     }
 
     $ctrl.cancel = function (index) {
-      // $ctrl.itemCopy[index] = angular.copy(item);
       $ctrl.data[index] = $ctrl.itemCopy[index];
-     // $ctrl.data[index] = $ctrl.itemCopy[index];
-      console.log("the changes were Canceled!",$ctrl.data[index], $ctrl.itemCopy[index] );
+      console.log("the changes were Canceled!", $ctrl.data[index], $ctrl.itemCopy[index]);
     }
 
     $ctrl.uploadTest = function (file) {
@@ -74,4 +53,36 @@ angular.module('rechi')
         console.log("OK!")
       }, function errorCallback(response) { console.log("Error88", response) })
     }
-  }]);
+
+    // Modal window
+    $ctrl.open = function () {
+      var modalInstance = $uibModal.open({
+        size: 'lg',
+        templateUrl: "pages/list/addItemModal.html",
+        resolve: {
+          list: function (GetItemService) {
+              return GetItemService.getItems();
+          }
+      },
+        controller: 'ModalAddItemController',
+        controllerAs: '$ctrl'
+      })
+
+      
+
+      modalInstance.result.then(function(item){
+        console.log('Result 111', item)
+        $ctrl.data.push(item);
+      }).catch(function (error) {
+        console.log("Failed!", error);
+    });
+    };
+    $ctrl.toggle = true;
+    $ctrl.tog = function () {
+       $ctrl.toggle = !$ctrl.toggle;
+      
+      }
+  
+  }])
+
+  

@@ -1,54 +1,41 @@
 <html ng-app="rechi">
-<script src="../node_modules/angular/angular.js"></script>
-<script src="../node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
-<script src="app.js"></script>
-<script src="app.routes.js"></script>
+<script src="scripts/vendor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="../node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
-<script src="../node_modules/angular-component/dist/angular-component.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/vendor.css">
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+<script src="scripts/main.js"></script>
 
-<!-- Controllers -->
-<script src="pages/list/listController.js"></script>
-<script src="pages/login/loginController.js"></script>
-<script src="pages/registration/registrationController.js"></script>
-<!-- Services -->
-<script src="services/authentification.js"></script>
-<script src="app.config.js"></script>
-
-<!-- Directives -->
-<script src="directives/rchItem.js"></script>
-<!-- <script src="directives/rchTest.js"></script> -->
-
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 <!-- Body -->
 
 <body>
-  <div>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <!-- btn HOME needed to be fixed with size and align -->
-      <!-- <a class="btn btn-default" align="right" href="#"> -->
-      <a class="btn btn-default" align="right" ui-sref="home">
-        <span class="glyphicon glyphicon-home"></span>
-      </a>
-      <button type="button" class="btn btn-default" ui-sref="logIn">Log In</button>
-      <button type="button" class="btn btn-default" ui-sref="registration">Sign Up</button>
-      <button type="button" class="btn btn-default" ui-sref="list">List</button>
+  <div ng-controller="MainController as $ctrl">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div>
+          <a ui-sref="home">
+            <img src="https://i.imgur.com/c5XJsYW.jpg" style="width:100px;height:48px;">
+          </a>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default" id="LogIn_btn" ui-sref="logIn">{{'LogIn_btn' | translate}}</button>
+            <button type="button" class="btn btn-default" id="SignUp_btn" ui-sref="registration">{{'SignUp_btn' | translate}}</button>
+            <button type="button" class="btn btn-default" id="List_btn" ui-sref="list">{{'List_btn' | translate}}</button>
+            <button type="button" class="btn btn-default" id="LogOut_btn" ui-sref="home" onClick=sessionStorage.clear()>{{'LogOut_btn' | translate}}</button>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default" id="en" ng-click="$ctrl.changeLanguage('en')">EN</button>
+            <button type="button" class="btn btn-default" id="ukr" ng-click="$ctrl.changeLanguage('ukr')">UA</button>
+          </div>
+        </div>
+      </div>
     </nav>
-  </div>
-  <div class="jumbotron">
-    <!-- <div style="color:rgb(47, 14, 78)" > -->
-    <!-- <p>
-        <em>this application can be used for composing the list of your own stuff</em>
-      </p> -->
     <!-- </div> -->
-  </div>
-  <div>
+    <!-- <div> -->
     <ui-view></ui-view>
+    <!-- </div> -->
   </div>
 </body>
 
