@@ -5,15 +5,17 @@ angular.module('rechi')
 
     // Angular-translate
     .config(["$translateProvider", function ($translateProvider) {
-        // $translateProvider.registerAvailableLanguageKeys(['Eng', 'Ukr'], {
-        //     'en': 'Eng',
-        //     'ru': 'Ukr'
-        //     });
+        $translateProvider.registerAvailableLanguageKeys(['En', 'Uk'], {
+            'en': 'En',
+            'ru': 'Uk',
+            '*': 'En'
+            });
         $translateProvider.useStaticFilesLoader({
             prefix: '/vocabulary/vocabulary_',
             suffix: '.json'
         });
-
-        $translateProvider.preferredLanguage('en');
-        //   $translateProvider.useSanitizeValueStrategy('escape')
+        
+        $translateProvider.fallbackLanguage('en');
+        $translateProvider.determinePreferredLanguage();
+        $translateProvider.useSanitizeValueStrategy('escape')
     }])
