@@ -1,6 +1,6 @@
  html {
     height: 100%;    
-    background: url("https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg")
+    /* background: url("https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg") */
     top no-repeat;
     background-color: white;
     margin: auto;
@@ -11,8 +11,8 @@
 
 body{
   width: 100%;
-  background: url("https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg")
-  top no-repeat;
+  /* background: url("https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg") */
+  /* top no-repeat; */
 }
 
 .navik{

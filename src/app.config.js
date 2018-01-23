@@ -31,20 +31,24 @@ angular.module('rechi')
 
 // Angular-translate
     .config(["$translateProvider",function($translateProvider){
-        $translateProvider.registerAvailableLanguageKeys(['Eng', 'Ukr'], {
-            'en': 'Eng',
-            'ukr': 'Ukr'
-            });
+        // $translateProvider.registerAvailableLanguageKeys(['Eng', 'Ukr'], {
+        //     'en': 'Eng',
+        //     'ru': 'Ukr'
+        //     });
             $translateProvider.useStaticFilesLoader({
                 prefix: '/vocabulary/vocabulary_',
                 suffix: '.json'
             });
 
       $translateProvider.preferredLanguage('en');
-      $translateProvider.useSanitizeValueStrategy('escape')
+    //   $translateProvider.useSanitizeValueStrategy('escape')
     }])
 
     // Background image
-    .config(function(){
-        var BackgroundImage = "https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg"
-    })
+    // .config(function(){
+    //     var BackgroundImage = "https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg"
+    // })
+    .constant('myBackgroundUrl', {
+        myBackgroundUrl: "https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg",
+        // ImgName: 'ascrum'
+      });

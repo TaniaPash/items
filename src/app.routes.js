@@ -1,5 +1,7 @@
 angular.module('rechi')
-    .config(function ($stateProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/login')
+
         var home = {
             name: 'home',
             url: '/',
@@ -38,5 +40,5 @@ angular.module('rechi')
         $stateProvider.state(logIn);
         $stateProvider.state(list);
         $stateProvider.state(registration);
-        $stateProvider.state(home);
+        // $stateProvider.state(home);
     });

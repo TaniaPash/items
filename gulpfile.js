@@ -4,11 +4,13 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     rigger = require('gulp-rigger'),
     concat = require('gulp-concat'),
+    ngAnnotate = require('gulp-ng-annotate'),
     gnf = require('gulp-npm-files'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch'),
     clean = require('gulp-clean'),
     connect = require('gulp-connect');
+
 
 gulp.task('html', function () {
     return gulp.src('src/**/*.html')
@@ -17,6 +19,11 @@ gulp.task('html', function () {
 
 gulp.task('js', function () {
     return gulp.src(['src/app.js', 'src/**/*.js'])
+        // .pipe(ngAnnotate({
+            // remove: true,
+            // add: true,
+            // single_quotes: true
+        // }))
         .pipe(concat('main.js'))
         .pipe(gulp.dest('dist/scripts/'))
 });
@@ -37,6 +44,7 @@ var dependencies = [
     "node_modules/angular-translate/dist/angular-translate.min.js",
     "node_modules/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js",
     "node_modules/angular-filter/dist/angular-filter.min.js",
+    "node_modules/angular-route/angular-route.js",
     "node_modules/@uirouter/angularjs/release/angular-ui-router.js",
     "node_modules/jquery/dist/jquery.min.js",
     "node_modules/bootstrap/dist/js/bootstrap.min.js",
@@ -78,7 +86,7 @@ gulp.task('copyJson', function () {
 gulp.task('watcher', function () {
     gulp.watch('src/**/*.html', gulp.series('html'));
     gulp.watch('src/**/*.js', gulp.series('js'));
-    gulp.watch('src/**/*.css', gulp.series('styles'));
+     gulp.watch('src/**/*.css', gulp.series('styles'));
     gulp.watch('src/**/*.json', gulp.series('copyJson'));
 });
 
@@ -94,7 +102,7 @@ gulp.task('connect', function () {
     });
 });
 
-gulp.task('build', gulp.series('clean', 'html', 'js', 'styles', 'copyNpmDep', 'copyNpmDepCSS', 'copyFonts', 'copyJson'));
+gulp.task('build', gulp.series( 'clean', 'html', 'js', 'styles', 'copyNpmDep', 'copyNpmDepCSS', 'copyFonts', 'copyJson'));
 
 gulp.task('main', gulp.parallel('watcher', 'connect'));
 
