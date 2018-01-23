@@ -42,5 +42,7 @@ angular.module('rechi')
         $ctrl.cancelAddNewItem = function () {
             $uibModalInstance.dismiss('cancel');
         };
+
+
     
     }]);

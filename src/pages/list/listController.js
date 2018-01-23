@@ -50,7 +50,7 @@ angular.module('rechi')
         console.log('Result 111', item)
         $ctrl.data.push(item);
       }).catch(function (error) {
-        console.log("Failed!", error);
+        console.log(error);
       });
     };
 
@@ -70,7 +70,9 @@ angular.module('rechi')
       modalInstance.result.then(function (response) {
         console.log('Result 11122', response)
         $ctrl.data[index] = response.data;
-      })
+      }).catch(function (error) {
+        console.log(error);
+      });
     };
 
     // Toggle style of the list
@@ -78,6 +80,4 @@ angular.module('rechi')
     $ctrl.tog = function () {
       $ctrl.toggle = !$ctrl.toggle;
     }
-
   }])
-

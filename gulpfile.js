@@ -19,12 +19,10 @@ gulp.task('html', function () {
 
 gulp.task('js', function () {
     return gulp.src(['src/app.js', 'src/**/*.js'])
-        // .pipe(ngAnnotate({
-            // remove: true,
-            // add: true,
-            // single_quotes: true
-        // }))
         .pipe(concat('main.js'))
+        //  .pipe(ngAnnotate({
+        // remove: true,
+        // }))
         .pipe(gulp.dest('dist/scripts/'))
 });
 
@@ -83,11 +81,12 @@ gulp.task('copyJson', function () {
         .pipe(gulp.dest('dist/vocabulary'))
 });
 
-gulp.task('watcher', function () {
+gulp.task('watcher', function (cb) {
     gulp.watch('src/**/*.html', gulp.series('html'));
     gulp.watch('src/**/*.js', gulp.series('js'));
-     gulp.watch('src/**/*.css', gulp.series('styles'));
+    gulp.watch('src/**/*.css', gulp.series('styles'));
     gulp.watch('src/**/*.json', gulp.series('copyJson'));
+    cb();
 });
 
 gulp.task('clean', function () {
@@ -95,15 +94,23 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
-gulp.task('connect', function () {
-    return connect.server({
+gulp.task('connect', function (cb) {
+    connect.server({
         root: 'dist',
-        port: 8000
+        port: 8000,
     });
+    cb();
 });
 
-gulp.task('build', gulp.series( 'clean', 'html', 'js', 'styles', 'copyNpmDep', 'copyNpmDepCSS', 'copyFonts', 'copyJson'));
+gulp.task('build', gulp.series('clean', 'html', 'js', 'styles', 'copyNpmDep', 'copyNpmDepCSS',
+    'copyFonts', 'copyJson'), function (done) {
+        done();
+    });
 
-gulp.task('main', gulp.parallel('watcher', 'connect'));
+gulp.task('main', gulp.parallel(['watcher', 'connect']), function (done) {
+    done();
+});
 
-gulp.task('default', gulp.series('build', 'main'));
+gulp.task('default', gulp.series(['build', 'main']), function (done) {
+    done();
+});
