@@ -1,7 +1,8 @@
 angular.module('rechi')
-    .controller('ModalAddItemController', ['$http', 'Upload', '$uibModal', 'GetItemService', '$uibModalInstance', function
-($http, Upload, $uibModal, GetItemService, $uibModalInstance) {
+    .controller('ModalAddItemController', ModalAddItemController)
     /*@ngInject*/
+    function ModalAddItemController ($http, Upload, $uibModal, GetItemService, $uibModalInstance) {
+    
         var $ctrl = this;
         $ctrl.newItem = {
             name: " ",
@@ -26,5 +27,4 @@ angular.module('rechi')
         $ctrl.cancelAddNewItem = function () {
             $uibModalInstance.dismiss('cancel');
         };
-
-    }]);
+    };
