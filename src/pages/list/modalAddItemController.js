@@ -1,15 +1,14 @@
 angular.module('rechi')
     .controller('ModalAddItemController', ['$http', 'Upload', '$uibModal', 'GetItemService', '$uibModalInstance', function
 ($http, Upload, $uibModal, GetItemService, $uibModalInstance) {
-
     /*@ngInject*/
-
         var $ctrl = this;
         $ctrl.newItem = {
             name: " ",
             description: " ",
             imageUrl: "",
         };
+
         $ctrl.newImage = null;
 
         $ctrl.saveItem = function () {

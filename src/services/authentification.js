@@ -1,5 +1,9 @@
 angular.module('rechi')
-    .service('AuthenticationService', function ($http, $state, $window) {
+    .service('AuthenticationService', AuthenticationService)
+
+    /*@ngInject*/
+
+    function AuthenticationService ($http, $state, $window) {
         this.checkLog = function (user) {
             return $http.post('https://rechi.herokuapp.com/auth', user)
                 .then(function (response) {
@@ -8,7 +12,7 @@ angular.module('rechi')
                     return response
                 })
         }
-    });
+    };
 
 
 

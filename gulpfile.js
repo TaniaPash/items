@@ -19,10 +19,10 @@ gulp.task('html', function () {
 
 gulp.task('js', function () {
     return gulp.src(['src/app.js', 'src/**/*.js'])
-        .pipe(concat('main.js'))
-        //  .pipe(ngAnnotate({
+         .pipe(ngAnnotate({
         // remove: true,
-        // }))
+        }))
+        .pipe(concat('main.js'))
         .pipe(gulp.dest('dist/scripts/'))
 });
 

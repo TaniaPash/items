@@ -1,6 +1,7 @@
 angular.module('rechi')
-    .controller('RegController', ['$scope', '$http', '$state', '$window',
-        function ($scope, $http, $state, $window) {
+    .controller('RegController', RegController)
+    
+        function RegController ($scope, $http, $state, $window) {
             var $ctrl = this;
             $ctrl.newUser = {
                 email: "",
@@ -13,4 +14,4 @@ angular.module('rechi')
                         $state.go('logIn');
                     }, function errorCallback(response) { console.log("Error during POST /users", response) });
             }
-        }]);
+        };

@@ -12,28 +12,30 @@
 <body>
   <!-- <div ng-controller="MainController as $main" ng-style="{'background-image': 'url({{$ctrl.backgroundImage}})'}"> -->
   <div ng-controller="MainController as $main">
-    <nav class="navbar fixed-top navbar-light">
-      <div class="container-fluid">
-        <a ui-sref="logIn">
-          <img src="https://i.imgur.com/c5XJsYW.jpg" style="width:100px;height:48px;">
-        </a>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a type="button" class="btn" id="en" ng-click="$main.changeLanguage('en')">EN</a>
-          </li>
-          <li>
-            <a type="button" class="btn" id="ukr" ng-click="$main.changeLanguage('uk')">UA</a>
-          </li>
-          <li>
-            <a ui-sref="logIn" ng-click="$main.logOut()">
-              <span class="glyphicon glyphicon-log-out"></span> {{'LOGOUT_btn' | translate}}</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
     <div>
-      <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
-      <ui-view></ui-view>
+      <nav class="navbar fixed-top navbar-light">
+        <div class="container-fluid">
+          <a ui-sref="logIn">
+            <img src="https://i.imgur.com/c5XJsYW.jpg" style="width:100px;height:48px;">
+          </a>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a type="button" class="btn" id="en" ng-click="$main.changeLanguage('en')">EN</a>
+            </li>
+            <li>
+              <a type="button" class="btn" id="ukr" ng-click="$main.changeLanguage('uk')">UA</a>
+            </li>
+            <li>
+              <a ui-sref="logIn" ng-click="$main.logOut()">
+                <span class="glyphicon glyphicon-log-out"></span> {{'LOGOUT_btn' | translate}}</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div>
+        <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+        <ui-view></ui-view>
+      </div>
     </div>
   </div>
 </body>

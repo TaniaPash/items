@@ -1,5 +1,8 @@
 angular.module('rechi')
-    .controller('LoginController', ['$scope', '$http', '$state', 'AuthenticationService', '$window', "$translate", function ($scope, $http, $state, AuthenticationService, $window, $translate) {
+    .controller('LoginController', LoginController)
+    /*@ngInject*/
+    function LoginController($scope, $http, $state, AuthenticationService, $window, $translate) {
+       
         var $ctrl = this;
         $ctrl.user = {
             email: "",
@@ -25,4 +28,4 @@ angular.module('rechi')
                     $state.go('list');
                 }, function errorCallback(response) { console.log("Error during POST /users", response) });
         }
-    }]);
+    };

@@ -19,4 +19,4 @@ function ModalChangeItemController ($http, itemCopy, $uibModal, $uibModalInstanc
         $ctrl.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
-    }]);
+    };
