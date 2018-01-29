@@ -10,8 +10,7 @@ angular.module('rechi')
             $ctrl.saveNewUser = function (newUser) {
                 $http.post('https://rechi.herokuapp.com/users', $ctrl.newUser)
                     .then(function successCallback(response) {
-                        console.log(response, "New User was registrated");
-                        $state.go('list');
-                    }, function errorCallback(response) { console.log("ErrorNewUser", response) });
+                        $state.go('logIn');
+                    }, function errorCallback(response) { console.log("Error during POST /users", response) });
             }
         }]);

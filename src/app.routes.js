@@ -1,12 +1,11 @@
 angular.module('rechi')
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/login')
+        // var home = {
+        //     name: 'home',
+        //     url: '/',
 
-        var home = {
-            name: 'home',
-            url: '/',
-
-        };
+        // };
         var logIn = {
             name: 'logIn',
             url: '/login',

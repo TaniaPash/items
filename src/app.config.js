@@ -21,6 +21,8 @@ angular.module('rechi')
     }])
 
     .constant('constant', {
-        appName: 'Items',
-        image:"https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg"
-           });
+        backgroundImage:"http://res.cloudinary.com/tania/image/upload/c_limit,w_1352/v1516987650/pexels-photo-270640_htxnbs.jpg",
+        apiHostUrl:"", 
+           
+    
+    });

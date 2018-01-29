@@ -1,40 +1,49 @@
-<div>
+<!-- List Page -->
+<!-- Search Panel -->
+<div class="bg-1">
     <div>
-        <h2 align="center" id="title_eng">
-            <em>My {{$ctrl.data.length}} things list</em>
-        </h2>
-    </div>
-    <br>
-    <div class="container-fluid">
-        <div>
-            <form class="form-horizontal col-sm-4">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </span>
-                    <input ng-model="search" class="form-control">
-                </div>
-            </form>
-            <!-- Add item  button-->
-            <button type="button" class="btn btn-default" align="right" ng-click="$ctrl.open()">
-                <span class="glyphicon glyphicon-plus">
+        <form class="form-horizontal search ">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
                 </span>
-                {{'Add_btn' | translate}}</button>
-        </div>
-        <br>
-        <div class="col-sm-4">
-            <button class="btn btn-default btn-md" ng-click="$ctrl.tog()">
-                <span class="glyphicon glyphicon-align-justify"></span>
-            </button>
+                <input ng-model="search" placeholder="Search" class="form-control">
+            </div>
+        </form>
+    </div>
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-1 row sidenav text-left">
+                <div>
+                    <!-- Toggle button -->
+                    <button class="btn btn-default btn-md" ng-click="$ctrl.tog()">
+                        <span class="glyphicon glyphicon-align-justify"></span>
+                    </button>
+                    <!-- Add item  button-->
+                    <button type="button" class="btn btn-default btn-md" align="right" ng-click="$ctrl.open()">
+                        <span class="glyphicon glyphicon-plus">
+                        </span>
+                    </button>
+                </div>
+                <br>
+                <br>
+            </div>
+
+            <!-- List of items -->
+            <div class="col-sm-10">
+                <div align="center">
+                    <h1 id="title_eng">
+                        <b>My {{$ctrl.data.length}} things list</b>
+                    </h1>
+                </div>
+                <br>
+                <div class="row">
+                    <rch-item id="grid" ng-class="{'col-xs-8 col-md-3' : $ctrl.toggle}" ng-repeat="item in $ctrl.data| filterBy: ['name', 'description']: search"
+                        item="item" itemCopy="itemCopy" index="$index" on-delete="$ctrl.deleteItem($index)" on-cancel="$ctrl.cancel($index)"
+                        on-edit="$ctrl.openChange(item, $index)">
+                    </rch-item>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
-<br>
-<!-- List of items -->
-<div class="row">
-    <rch-item id="grid" ng-class="{'col-xs-6 col-md-4' : $ctrl.toggle }" ng-repeat="item in $ctrl.data| filterBy: ['name', 'description']: search"
-        item="item" itemCopy="itemCopy" index="$index" on-delete="$ctrl.deleteItem($index)" on-cancel="$ctrl.cancel($index)"
-        on-edit="$ctrl.openChange(item, $index)">
-    </rch-item>
 </div>
