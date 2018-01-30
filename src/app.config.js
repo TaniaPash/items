@@ -20,9 +20,3 @@ angular.module('rechi')
         $translateProvider.useSanitizeValueStrategy('escape')
     }])
 
-    .constant('constant', {
-        backgroundImage:"http://res.cloudinary.com/tania/image/upload/c_limit,w_1352/v1516987650/pexels-photo-270640_htxnbs.jpg",
-        apiHostUrl:"", 
-           
-    
-    });

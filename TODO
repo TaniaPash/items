@@ -1,7 +1,9 @@
 
 General:
 ☐ Documantation;
-☐ create Read.md;
+✔ create Read.md; @done(18-01-30 19:42)
+✔ rename constant and move into new file; @done(18-01-30 20:10)
+☐ add constant apiURL and use it in services;
 ☐ WD for mobile devices;
 ☐ Watch WD course on CodeSchool resourse; 
 ☐ Change design of app;

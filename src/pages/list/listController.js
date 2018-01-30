@@ -3,7 +3,7 @@ angular.module('rechi')
 
 /*@ngInject*/
 function ListController
-  ($http, Upload, $uibModal, GetItemService, usSpinnerService) {
+  ($http, Upload, $uibModal, GetItemService, usSpinnerService, allConstants) {
 
   var $ctrl = this;
 
@@ -19,7 +19,7 @@ function ListController
     });
 
   $ctrl.deleteItem = function (index) {
-    $http.delete('https://rechi.herokuapp.com/items/' + $ctrl.data[index].id)
+    $http.delete( allConstants.apiHostUrl + '/items/' + $ctrl.data[index].id)
       .then(function successCallback(response) {
         $ctrl.data.splice(index, 1);
       }, function errorCallback(response) { console.log("Error during Delete Item", response) })

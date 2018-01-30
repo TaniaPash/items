@@ -1,11 +1,11 @@
 angular.module('rechi')
     .service('GetItemService', GetItemService)
      /*@ngInject*/
-    function GetItemService($http) {
+    function GetItemService($http, allConstants) {
         this.getItems = function () {
-            return $http.get('https://rechi.herokuapp.com/items', {});
+            return $http.get( allConstants.apiHostUrl + '/items', {});
         }
         this.addItem = function (newItem) {
-            return $http.post('https://rechi.herokuapp.com/items', newItem)
+            return $http.post(allConstants.apiHostUrl + '/items', newItem)
         }
     };
