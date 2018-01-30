@@ -5,7 +5,7 @@
 ### Functionality:
 ##### The user can SignIn or SignUp and create own list of items. 
 ##### Main functionality of the list:
-* ##### add, change or delete item
-* ##### search item
+* ##### add, change or delete an item
+* ##### search an item
 
-**ITEMS_app is the test project** with purpose to show basic skills in work with AngularJS, Gulp, REST principles, Promises, authentication with JWT and such libraries as: Bootstrap, Angular-translate, NgFileUpload, UI Router.
+**ITEMS_app is the test project** with the purpose to show basic skills in work with AngularJS, Gulp, REST principles, Promises, authentication with JWT and such libraries as Bootstrap, Angular-translate, NgFileUpload, UI Router.
