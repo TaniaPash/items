@@ -1,16 +1,18 @@
 
 General:
-☐ Documantation;
+✔ Documantation; @done(18-01-30 23:47)
 ✔ create Read.md; @done(18-01-30 19:42)
 ✔ rename constant and move into new file; @done(18-01-30 20:10)
-☐ add constant apiURL and use it in services;
+✔ add constant apiURL and use it in services; @done(18-01-30 20:37)
 ☐ WD for mobile devices;
 ☐ Watch WD course on CodeSchool resourse; 
 ☐ Change design of app;
+☐ Create an issue about problem with backend;
 ☐ JS ES6.
 
 JS ES6:
     ☐ Watch course on CodeSchool resourse;
+    ☐ Create the new branch;
     ☐ Change functions to ES6;
     ☐ Use Babel to change to JS5;
 
