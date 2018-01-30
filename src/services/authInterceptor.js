@@ -1,5 +1,8 @@
 angular.module('rechi')
-    .factory('authInterceptor', function ($rootScope, $q, $window) {
+    .factory('authInterceptor', authInterceptor)
+    
+    /*@ngInject*/
+    function authInterceptor ($rootScope, $q, $window) {
         return {
             request: function (config) {
                 config.headers = config.headers || {};
@@ -14,4 +17,4 @@ angular.module('rechi')
                 return response || $q.when(response);
             }
         };
-    })
+    };

@@ -1,11 +1,13 @@
 {
     "Email": "Пошта",
     "Password": "Пароль",
-    "Ok":"Підтвердити",
-    "LogIn_btn":"Вхід",
-    "SignUp_btn":"Реєстрація",
+    "SUBMIT_btn":"Підтвердити",
+    "LOGIN_btn":"Вхід",
+    "LOGIN_msg":"Вхід",
+    "SIGNUP_msg":"Зареєструватись",
+    "SIGNUP_btn":"Зареєструватись",
     "List_btn":"Повернутись до списку",
-    "LogOut_btn":"Вихід",
+    "LOGOUT_btn":"Вихід",
     "Cancel_btn":"Відмінити",
     "Save_btn":"Зберегти",
     "Name":"Ім'я",
@@ -13,6 +15,5 @@
     "itemName":"Ім'я речі",
     "itemDescription":"Опис речі",
     "addNewItem":"Додати нову річ",
-    "Select_btn":"Обрати зображення",
-    "":""
+    "Select_btn":"Обрати зображення"
   }

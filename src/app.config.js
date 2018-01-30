@@ -20,7 +20,3 @@ angular.module('rechi')
         $translateProvider.useSanitizeValueStrategy('escape')
     }])
 
-    .constant('constant', {
-        appName: 'Items',
-        image:"https://ae01.alicdn.com/kf/HTB1xCW.KVXXXXXFaXXXq6xXFXXXy/50mm-Rhodium-tone-Flat-Head-Pins-eye-pins-studs-beads-Needle-components-earring-Agulhas-crafts-Dangle.jpg"
-           });

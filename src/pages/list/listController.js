@@ -1,83 +1,67 @@
 angular.module('rechi')
-  .controller('ListController', ['$http', 'Upload', '$uibModal', 'GetItemService', 'usSpinnerService', function
-   ($http, Upload, $uibModal, GetItemService, usSpinnerService) {
+  .controller('ListController', ListController)
 
-    var $ctrl = this;
+/*@ngInject*/
+function ListController
+  ($http, Upload, $uibModal, GetItemService, usSpinnerService, allConstants) {
 
-    $ctrl.itemCopy = [];
-    usSpinnerService.stop();
-    GetItemService.getItems()
-      .then(function successCallback(list) {
-        $ctrl.data = list.data
-      }, function errorCallback(list) {
-        console.log('Error during GET /items', list);
-      });
-    console.log('List Controller', $ctrl);
+  var $ctrl = this;
 
-    $ctrl.deleteItem = function (index) {
-      $http.delete('https://rechi.herokuapp.com/items/' + $ctrl.data[index].id)
-        .then(function successCallback(response) {
-          $ctrl.data.splice(index, 1);
-          console.log("Item was deleted!")
-        }, function errorCallback(response) { console.log("Error3: Item was not deleted!", response) })
-    };
+  $ctrl.itemCopy = [];
 
-    $ctrl.uploadTest = function (file) {
-      Upload.upload({
-        url: 'https://api.cloudinary.com/v1_1/hxfnxj17l/upload',
-        data: { file: file, upload_preset: 'xi1quxpr' }
-      }).then(function successCallback(response) {
-        console.log(response);
-        console.log("OK!")
-      }, function errorCallback(response) { console.log("Error88", response) })
-    }
+  usSpinnerService.stop();
 
-    // Modal window ADD ITEM
-    $ctrl.open = function () {
-      var modalInstance = $uibModal.open({
-        size: 'lg',
-        templateUrl: "pages/list/addItemModal.html",
-        resolve: {
-          list: function (GetItemService) {
-            return GetItemService.getItems();
-          }
-        },
-        controller: 'ModalAddItemController',
-        controllerAs: '$ctrl'
-      })
+  GetItemService.getItems()
+    .then(function successCallback(list) {
+      $ctrl.data = list.data;
+    }, function errorCallback(list) {
+      console.log('Error during GET /items', list);
+    });
 
-      modalInstance.result.then(function (item) {
-        console.log('Result 111', item)
-        $ctrl.data.push(item);
-      }).catch(function (error) {
-        console.log(error);
-      });
-    };
+  $ctrl.deleteItem = function (index) {
+    $http.delete( allConstants.apiHostUrl + '/items/' + $ctrl.data[index].id)
+      .then(function successCallback(response) {
+        $ctrl.data.splice(index, 1);
+      }, function errorCallback(response) { console.log("Error during Delete Item", response) })
+  };
 
-    // Modal window CHANGE ITEM
-    $ctrl.openChange = function (item, index) {
-      var modalInstance = $uibModal.open({
-        size: 'lg',
-        templateUrl: "pages/list/changeItemModal.html",
-        controller: 'ModalChangeItemController',
-        controllerAs: '$ctrl',
-        resolve: {
-          copy: function () {
-            return $ctrl.itemCopy[index] = angular.copy(item);
-          }
+  // Modal window ADD ITEM
+  $ctrl.open = function () {
+    var modalInstance = $uibModal.open({
+      size: 'lg',
+      templateUrl: "pages/list/addItemModal.html",
+      controller: 'ModalAddItemController',
+      controllerAs: '$ctrl'
+    })
+
+    modalInstance.result.then(function (item) {
+      $ctrl.data.push(item);
+    }).catch(function (error) {
+    });
+  };
+
+  // Modal window CHANGE ITEM
+  $ctrl.openChange = function (item, index) {
+    var modalInstance = $uibModal.open({
+      size: 'lg',
+      templateUrl: "pages/list/changeItemModal.html",
+      controller: 'ModalChangeItemController',
+      controllerAs: '$ctrl',
+      resolve: {
+        itemCopy: function () {
+          return $ctrl.itemCopy[index] = angular.copy(item);
         }
-      })
-      modalInstance.result.then(function (response) {
-        console.log('Result 11122', response)
-        $ctrl.data[index] = response.data;
-      }).catch(function (error) {
-        console.log(error);
-      });
-    };
+      }
+    })
+    modalInstance.result.then(function (response) {
+      $ctrl.data[index] = response.data;
+    }).catch(function (error) {
+    });
+  };
 
-    // Toggle style of the list
-    $ctrl.toggle = true;
-    $ctrl.tog = function () {
-      $ctrl.toggle = !$ctrl.toggle;
-    }
-  }])
+  // Toggle list's style
+  $ctrl.toggle = true;
+  $ctrl.tog = function () {
+    $ctrl.toggle = !$ctrl.toggle;
+  }
+}
