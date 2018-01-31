@@ -12,7 +12,8 @@
 
 **Please use login and password for the guest to view the project**:
 
-Login: test@test
-Password: test
+*Login:* test@test
+
+*Password:* test
 
 
