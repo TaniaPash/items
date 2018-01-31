@@ -33,7 +33,6 @@ function ListController
       controller: 'ModalAddItemController',
       controllerAs: '$ctrl'
     })
-
     modalInstance.result.then(function (item) {
       $ctrl.data.push(item);
     }).catch(function (error) {
