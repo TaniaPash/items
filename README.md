@@ -10,7 +10,7 @@
 
 **ITEMS_app is the test project** with the purpose to show basic skills in work with AngularJS, Gulp, REST principles, Promises, authentication with JWT and such libraries as Bootstrap, Angular-translate, NgFileUpload, UI Router.
 
-**Please use login and password for the guest to view the project**:
+**Please use test login and password to view the project**:
 
 *Login:* test@test
 
