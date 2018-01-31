@@ -1,33 +1,32 @@
-<div class="container-fluid bg-1 text-center">
-<div class="form-signin">
-    <h1 class="h3 mb-3 font-weight-normal">{{'SIGNUP_msg' | translate}}</h1>
-    <br>
-    <form class="form-horizontal">
-        <div>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-user"></i>
-                </span>
-                <input type="text" class="form-control" placeholder="Enter your name" name="pwd" ng-model="$ctrl.newUser.name">
+<div class="row">
+    <div class="container form-signin" align="center">
+        <h1 class="h1">{{'SIGNUP_msg' | translate}}</h1>
+        <form class="form-horizontal">
+            <div class="col-sm-offset-4 col-sm-4">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Enter your name" name="pwd" ng-model="$ctrl.newUser.name">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                    </span>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="emailK" ng-model="$ctrl.newUser.email">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" ng-model="$ctrl.newUser.password">
+                </div>
+                <br>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary" ng-click="$ctrl.saveNewUser()">{{'SUBMIT_btn' | translate}}</button>
+                    <button type="submit" class="btn btn-danger" id="Ok" ui-sref="logIn">{{'LOGIN_btn'| translate}}</button>
+                </div>
             </div>
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">
-                <i class="glyphicon glyphicon-envelope"></i>
-            </span>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="emailK" ng-model="$ctrl.newUser.email">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon">
-                <i class="glyphicon glyphicon-lock"></i>
-            </span>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" ng-model="$ctrl.newUser.password">
-        </div>
-        <br>
-        <div class="btn-group">
-            <button type="submit" class="btn btn-primary" ng-click="$ctrl.saveNewUser()">{{'SUBMIT_btn' | translate}}</button>
-            <button type="submit" class="btn btn-danger" id="Ok" ui-sref="logIn">{{'LOGIN_btn'| translate}}</button>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 </div>

@@ -28,7 +28,7 @@ function ListController
   // Modal window ADD ITEM
   $ctrl.open = function () {
     var modalInstance = $uibModal.open({
-      size: 'lg',
+      size: 'md',
       templateUrl: "pages/list/addItemModal.html",
       controller: 'ModalAddItemController',
       controllerAs: '$ctrl'
@@ -43,7 +43,7 @@ function ListController
   // Modal window CHANGE ITEM
   $ctrl.openChange = function (item, index) {
     var modalInstance = $uibModal.open({
-      size: 'lg',
+      size: 'md',
       templateUrl: "pages/list/changeItemModal.html",
       controller: 'ModalChangeItemController',
       controllerAs: '$ctrl',

@@ -5,26 +5,20 @@
 
 body{
   font: 15px sans-serif;
-  line-height: 2;
+  color: black;
+  line-height: 4;
+  padding-top: 70px;
+  margin: 10px;
 }
 
-.font-weight-normal {
-  font-weight: 400!important;
-}
-
-.my-3 {
-  margin-bottom: 1rem!important;
-  
-}
-
-.h3 {
-  font-size: 3rem;
-  text-align: center;
+.h1 {
+font-size: 5rem;
+ color:rgb(51, 53, 54);
 }
 
 .bg-1{
-  background: url("http://res.cloudinary.com/tania/image/upload/c_limit,w_1352/v1516987650/pexels-photo-270640_htxnbs.jpg");
-  color: #ffffff;
+  background: url("http://res.cloudinary.com/tania/image/upload/c_limit,w_1352/v1516987650/pexels-photo-270640_htxnbs.jpg") top no-repeat;
+  /* color: #ffffff; */
 }
 
 .bg-2{
@@ -33,14 +27,13 @@ body{
 }
 
 .form-signin {
-  width: 30%;
   padding: 15px;
-  margin: 120 auto;
+  margin: 90 auto;
   border: 2px solid #ddd;
   background-color: rgba(255, 255, 255, 0.178);
 }
 
-  .itemImage {
+.itemImage {
     width:240px; 
     height:200px !important;
     float: left ;
@@ -68,8 +61,6 @@ body{
   width: 250px;
   float: right;
 }
-
-
 
 p.a {
   font-family: Arial, Helvetica, sans-serif;
