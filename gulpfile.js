@@ -20,7 +20,6 @@ gulp.task('html', function () {
 gulp.task('js', function () {
     return gulp.src(['src/app.js', 'src/**/*.js'])
          .pipe(ngAnnotate({
-        // remove: true,
         }))
         .pipe(concat('main.js'))
         .pipe(gulp.dest('dist/scripts/'))
@@ -102,7 +101,7 @@ gulp.task('connect', function (cb) {
     cb();
 });
 
-gulp.task('build', gulp.series('clean', 'html', 'js', 'styles', 'copyNpmDep', 'copyNpmDepCSS',
+gulp.task('build', gulp.series('js','clean', 'html', 'js', 'styles', 'copyNpmDep', 'copyNpmDepCSS',
     'copyFonts', 'copyJson'), function (done) {
         done();
     });
