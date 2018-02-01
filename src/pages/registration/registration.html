@@ -1,25 +1,28 @@
 <div class="row">
     <div class="container form-signin" align="center">
         <h1 class="h1">{{'SIGNUP_msg' | translate}}</h1>
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="regForm" role="form">
             <div class="col-sm-offset-4 col-sm-4">
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="Enter your name" name="pwd" ng-model="$ctrl.newUser.name">
+                    <input type="text" class="form-control" placeholder="Enter your name" name="name" ng-model="$ctrl.newUser.name" required>
+                    <span ng-show="regForm.name.$touched && regForm.name.$invalid">The name is required</span>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="glyphicon glyphicon-envelope"></i>
                     </span>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="emailK" ng-model="$ctrl.newUser.email">
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="regEmail" ng-model="$ctrl.newUser.email" required>
+                    <span ng-show="regForm.regEmail.$touched && regForm.regEmail.$invalid">Email is required</span>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon">
                         <i class="glyphicon glyphicon-lock"></i>
                     </span>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" ng-model="$ctrl.newUser.password">
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="regPsw" ng-model="$ctrl.newUser.password"required>
+                    <span ng-show="regForm.regPsw.$dirty && regForm.regPsw.$touched && regForm.regPsw.$invalid">Password is required</span>
                 </div>
                 <br>
                 <div class="btn-group">

@@ -13,7 +13,15 @@ body{
 
 .h1 {
 font-size: 5rem;
- color:rgb(51, 53, 54);
+ /* color:rgb(51, 53, 54); */
+ color: white;
+}
+
+input.ng-invalid {
+  background-color:rgba(192, 248, 255, 0.144);
+}
+input.ng-valid {
+  background-color:rgba(192, 249, 255, 0.541);
 }
 
 .bg-1{
@@ -22,9 +30,9 @@ font-size: 5rem;
 
 .form-signin {
   padding: 15px;
-  margin: 90 auto;
+  margin: 60 auto;
   border: 2px solid #ddd;
-  background-color: rgba(255, 255, 255, 0.178);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .itemImage {
