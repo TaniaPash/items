@@ -11,6 +11,7 @@
 **ITEMS_app is the test project** with the purpose to show basic skills in work with AngularJS, Gulp, REST principles, Promises, authentication with JWT and such libraries as Bootstrap, Angular-translate, NgFileUpload, UI Router.
 
 ### Installing
+
 1. Clone the repo
 2. npm install -g gulp to install Gulp globally.
 3. npm install to resolve project dependencies.
@@ -21,5 +22,8 @@
 *Login:* test@test
 
 *Password:* test
+
+### Documenatation:
+https://github.com/TaniaPash/items/wiki
 
 
