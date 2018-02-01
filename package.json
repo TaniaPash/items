@@ -13,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/Liovareg/rechi_front/issues"
+    "url": "https://github.com/TaniaPash/items/issues"
   },
-  "homepage": "https://gitlab.com/Liovareg/rechi_front#README",
+  "homepage": "https://github.com/TaniaPash/items/blob/master/README.md",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.11",
     "angular": "^1.6.6",
