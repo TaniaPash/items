@@ -9,3 +9,7 @@ angular.module('rechi')
             return $http.post(allConstants.apiHostUrl + '/items', newItem)
         }
     };
+
+
+
+    // fg
