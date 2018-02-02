@@ -6,7 +6,7 @@ angular.module('rechi')
         return {
             request: function (config) {
                 config.headers = config.headers || {};
-                if ($window.sessionStorage.token && config.url.indexOf('cloudinary') === -1) //el dosen't exist in array 
+                if ($window.sessionStorage.token && config.url.indexOf('cloudinary') === -1) 
                  {
                     config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
                 }
