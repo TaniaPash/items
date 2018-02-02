@@ -1,51 +1,66 @@
 angular.module('rechi')
-  .controller('ListController', function ($http) {
-    var $ctrl = this;
-    $ctrl.newItem = {
-      name: " ",
-      description: " ",
-    };
-    $ctrl.itemCopy = [];
+  .controller('ListController', ListController)
 
-    $http.get('https://rechi.herokuapp.com/items')
+/*@ngInject*/
+function ListController
+  ($http, Upload, $uibModal, GetItemService, usSpinnerService, allConstants) {
+
+  var $ctrl = this;
+
+  $ctrl.itemCopy = [];
+
+  usSpinnerService.stop();
+
+  GetItemService.getItems()
+    .then(function successCallback(list) {
+      $ctrl.data = list.data;
+    }, function errorCallback(list) {
+      console.log('Error during GET /items', list);
+    });
+
+  $ctrl.deleteItem = function (index) {
+    $http.delete( allConstants.apiHostUrl + '/items/' + $ctrl.data[index].id)
       .then(function successCallback(response) {
-        $ctrl.data = response.data;
-      }, function errorCallback(response) {
-        console.log('Error during GET /items', response);
-      });
+        $ctrl.data.splice(index, 1);
+      }, function errorCallback(response) { console.log("Error during Delete Item", response) })
+  };
 
-    console.log('List Controller', $ctrl);
+  // Modal window ADD ITEM
+  $ctrl.open = function () {
+    var modalInstance = $uibModal.open({
+      size: 'md',
+      templateUrl: "pages/list/addItemModal.html",
+      controller: 'ModalAddItemController',
+      controllerAs: '$ctrl'
+    })
+    modalInstance.result.then(function (item) {
+      $ctrl.data.push(item);
+    }).catch(function (error) {
+    });
+  };
 
-    $ctrl.saveItem = function () {
-      $http.post('https://rechi.herokuapp.com/items', $ctrl.newItem)
-        .then(function successCallback(response) {
-          $ctrl.data.push(response.data);
-          $ctrl.newItem = {};
-          console.log(response);
-        }, function errorCallback(response) { console.log("Error2", response) })
-    };
+  // Modal window CHANGE ITEM
+  $ctrl.openChange = function (item, index) {
+    var modalInstance = $uibModal.open({
+      size: 'md',
+      templateUrl: "pages/list/changeItemModal.html",
+      controller: 'ModalChangeItemController',
+      controllerAs: '$ctrl',
+      resolve: {
+        itemCopy: function () {
+          return $ctrl.itemCopy[index] = angular.copy(item);
+        }
+      }
+    })
+    modalInstance.result.then(function (response) {
+      $ctrl.data[index] = response.data;
+    }).catch(function (error) {
+    });
+  };
 
-    $ctrl.deleteItem = function (index) {
-      $http.delete('https://rechi.herokuapp.com/items/' + $ctrl.data[index].id)
-        .then(function successCallback(response) {
-          $ctrl.data.splice(index, 1);
-          console.log("Item was deleted!")
-        }, function errorCallback(response) { console.log("Error3: Item was not deleted!", response) })
-    };
-
-    $ctrl.saveUpdatedItem = function (index) {
-      $http.put('https://rechi.herokuapp.com/items/' + $ctrl.data[index].id, $ctrl.data[index])
-        .then(function successCallback(response) {
-          console.log("Item was udated!");
-        }, function errorCallback(response) { console.log("Error4", response) })
-    };
-
-    $ctrl.edit = function (item, index) {
-      $ctrl.itemCopy[index] = angular.copy(item);
-    }
-
-    $ctrl.cancel = function (index) {
-      $ctrl.data[index] = $ctrl.itemCopy[index];
-      console.log("the changes were Canceled!");
-    }
-  });
+  // Toggle list's style
+  $ctrl.toggle = true;
+  $ctrl.tog = function () {
+    $ctrl.toggle = !$ctrl.toggle;
+  }
+}

@@ -1,47 +1,44 @@
-<div>
-    <h1 align="center">Everything I Own: My {{$ctrl.data.length}} Things</h1>
-
-    <!-- Add item -->
-
-    <div class="addItemPanel">
-        <button type="button" class="btn btn-default btn-sm" align="left" ng-click="showpanel=true" ng-hide="showme">
-            <span class="glyphicon glyphicon-plus"></span>Add item</button>
-        <h3 ng-show="showpanel">Add item</h3>
-        <form ng-show="showpanel">
-            Item name
-            <input ng-model="$ctrl.newItem.name"> Item description
-            <textarea rows="1" cols="50" ng-model="$ctrl.newItem.description"></textarea>
-            <button type="submit" ng-click="$ctrl.saveItem()">Add</button>
-            <input type="reset" value="Cancel" ng-click="showpanel=false">
-
+<!-- List Page -->
+<div class="row">
+    <div>
+        <form class="form-horizontal search ">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
+                <input ng-model="search" placeholder="Search" class="form-control">
+            </div>
         </form>
     </div>
-
-    <!-- List of items -->
-
-    <div class="grid-container">
-        <div ng-repeat="item in $ctrl.data track by $index">
-
-            <p>{{"No"+ [$index + 1]}}</p>
-            <p class="title" ng-hide="showme">{{item.name}}</p>
-            <p ng-hide="showme">{{item.description}}</p>
-            <p ng-hide="showme">Item Id:{{item.id}}</p>
-            <!-- Edit button -->
-            <button type="submit" ng-click="$ctrl.edit(item, $index); showme=true" ng-hide="showme">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </button>
-            <!-- Delete mode -->
-            <button type="submit" ng-click="$ctrl.deleteItem($index)" ng-hide="showme">
-                <span class="glyphicon glyphicon-remove"></span>
-            </button>
-            <!-- Edit mode -->
-            <div>
-                <input ng-model="item.name" ng-show="showme">
-                <textarea rows="3" cols="22.95" ng-model="item.description" ng-show="showme"></textarea>
-
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-1 row sidenav text-left">
+                <div>
+                    <!-- Toggle button -->
+                    <button class="btn btn-default btn-md" ng-click="$ctrl.tog()">
+                        <span class="glyphicon glyphicon-align-justify"></span>
+                    </button>
+                    <!-- Add item  button-->
+                    <button type="button" class="btn btn-default btn-md" align="right" ng-click="$ctrl.open()">
+                        <span class="glyphicon glyphicon-plus">
+                        </span>
+                    </button>
+                </div>
             </div>
-            <button type="submit" ng-click="$ctrl.saveUpdatedItem($index); showme=false" ng-show="showme">Save</button>
-            <button type="submit" ng-click="$ctrl.cancel($index); showme=false" ng-show="showme">Cancel</button>
+            <!-- List of items -->
+            <div class="col-sm-10">
+                <div align="center">
+                    <h1 id="title_eng">
+                        <b>My {{$ctrl.data.length}} things list</b>
+                    </h1>
+                </div>
+                <div class="row" align="center">
+                    <rch-item id="grid" ng-class="{'col-xs-8 col-md-3' : $ctrl.toggle}" ng-repeat="item in $ctrl.data| filterBy: ['name', 'description']: search"
+                        item="item" itemCopy="itemCopy" index="$index" on-delete="$ctrl.deleteItem($index)" on-cancel="$ctrl.cancel($index)"
+                        on-edit="$ctrl.openChange(item, $index)">
+                    </rch-item>
+                </div>
+            </div>
         </div>
     </div>
 </div>

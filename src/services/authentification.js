@@ -1,12 +1,19 @@
 angular.module('rechi')
-    .service('AuthenticationService', function ($http, $state) {
+    .service('AuthenticationService', AuthenticationService)
+
+    /*@ngInject*/
+
+    function AuthenticationService ($http, $state, $window, allConstants) {
         this.checkLog = function (user) {
-            $http.post('https://rechi.herokuapp.com/auth', user)
-            .then(function (response) {
-                $state.go('list');
-                console.log(response);
-            }, function (response) { console.log("LoginError", response) })
+            return $http.post(allConstants.apiHostUrl + '/auth', user)
+                .then(function (response) {
+                    $window.sessionStorage.token = response.data.token;
+                    $state.go('list');
+                    return response
+                })
         }
-    });
+    };
+
+
 
 
