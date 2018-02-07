@@ -25,10 +25,10 @@
                     <button type="submit" class="btn btn-primary btn-md " id="Ok" ng-click="$ctrl.submit(); checked=true">{{'SUBMIT_btn' | translate}} </button>
                     <button type="submit" class="btn btn-danger btn-md" id="Ok2" ui-sref="registration">{{'SIGNUP_btn' | translate}}</button>
                 </div>
-                <div class="col-sm-offset-2 col-sm-10 btn-group">
+                <div  class="col-sm-offset-2 col-sm-10 btn-group">
                     <div>
                         <h3>
-                            <strong>{{$ctrl.error}}</strong>
+                            <strong id="alert">{{$ctrl.error}}</strong>
                         </h3>
                     </div>
                 </div>
