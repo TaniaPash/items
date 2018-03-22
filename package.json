@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://github.com/TaniaPash/items.git"
+    "url": "https://github.com/TaniaPash/items.git"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,16 @@
     "url": "https://github.com/TaniaPash/items/issues"
   },
   "homepage": "https://github.com/TaniaPash/items/blob/master/README.md",
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "getLastRelease": "@semantic-release/git",
+    "publish": [
+      "@semantic-release/github"
+    ]
+  },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.11",
     "angular": "^1.6.6",
@@ -33,6 +44,8 @@
     "ng-file-upload": "^12.2.13"
   },
   "devDependencies": {
+    "@semantic-release/git": "^4.0.1",
+    "@semantic-release/github": "^4.2.8",
     "angular-translate": "^2.17.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-clean": "^0.3.2",
@@ -43,6 +56,7 @@
     "gulp-npm-files": "^0.1.3",
     "gulp-rigger": "^0.5.8",
     "gulp-uglify": "^3.0.0",
-    "gulp-watch": "^5.0.0"
+    "gulp-watch": "^5.0.0",
+    "semantic-release": "^15.1.4"
   }
 }
