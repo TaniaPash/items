@@ -6,7 +6,7 @@ before_install:
   - npm install -g xo npx
 env:
   global:
-    - SEM_TAG=${@}
+    - SEM_TAG=${SEM_TAG}
     - SEMAN_TAG=${SEMANTIC_TAG}
 
 install:
