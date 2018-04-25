@@ -1,17 +1,19 @@
 angular.module('rechi')
-    .controller('RegController', RegController)
-    
-        function RegController ($scope, $http, $state, $window, allConstants) {
-            var $ctrl = this;
-            $ctrl.newUser = {
-                email: "",
-                password: "",
-                name: ""
-            };
-            $ctrl.saveNewUser = function (newUser) {
-                $http.post (allConstants.apiHostUrl + '/users', $ctrl.newUser)
-                    .then(function successCallback(response) {
+	.controller('RegController', RegController);
+
+function RegController($scope, $http, $state, $window, allConstants) {
+	const $ctrl = this;
+	$ctrl.newUser = {
+		email: '',
+		password: '',
+		name: ''
+	};
+	$ctrl.saveNewUser = function (newUser) {
+                $http.post(allConstants.apiHostUrl + '/users', $ctrl.newUser)
+                	.then(response => {
                         $state.go('logIn');
-                    }, function errorCallback(response) { console.log("Error during POST /users", response) });
-            }
-        };
+                	}, response => {
+ console.log('Error during POST /users', response);
+                	});
+	};
+}

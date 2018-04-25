@@ -1,22 +1,23 @@
 angular.module('rechi')
-    .controller('ModalChangeItemController', ModalChangeItemController)
+	.controller('ModalChangeItemController', ModalChangeItemController);
 
-/*@ngInject*/
+/* @ngInject */
 
 function ModalChangeItemController($http, itemCopy, $uibModal, $uibModalInstance, allConstants) {
+	const $ctrl = this;
 
-    var $ctrl = this;
+	$ctrl.item = itemCopy;
 
-    $ctrl.item = itemCopy;
-
-    $ctrl.save = function (item) {
+	$ctrl.save = function (item) {
         $http.put(allConstants.apiHostUrl + '/items/' + $ctrl.item.id, $ctrl.item)
-            .then(function successCallback(response) {
+        	.then(response => {
                 $uibModalInstance.close(response);
-            }, function errorCallback(response) { console.log("Error during PUT /Item", response) })
-    };
+        	}, response => {
+ console.log('Error during PUT /Item', response);
+        	});
+	};
 
-    $ctrl.cancel = function () {
+	$ctrl.cancel = function () {
         $uibModalInstance.dismiss('cancel');
-    };
-};
+	};
+}
