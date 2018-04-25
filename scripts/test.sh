@@ -1,5 +1,5 @@
 #!/bin/bash
 S_TAG=${1:-def} 
 echo $S_TAG
-echo "foo"
+echo "+"
 echo $SEM_TAG
