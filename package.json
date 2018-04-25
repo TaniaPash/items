@@ -30,7 +30,11 @@
         ]
       }
     ],
-    "getLastRelease": "@semantic-release/git",
+    "getLastRelease": ["@semantic-release/git",
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "bash ./scripts/semantic.sh ${nextRelease.version} > output.json"
+      }],
     "publish": [
       {
         "path": "@semantic-release/npm",
@@ -38,7 +42,7 @@
       },
       {
         "path": "@semantic-release/exec",
-        "cmd": "bash ./scripts/semantic.sh ${nextRelease.version}"
+        "cmd": "SEMANTIC_TAG=${nextRelease.version}"
       },
       "@semantic-release/git",
       "@semantic-release/github"
