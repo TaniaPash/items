@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - 6
+
+before_install:
+  - npm install -g xo
+
+install:
+  - npm install
+
+script:
+  - npm test
+
+after_success:
+  - npx -p node@8 -c "npm run semantic-release"
+
+deploy:
+  - skip_cleanup: true
+    provider: script
+    script: bash ./scripts/semantic.sh $TRAVIS_COMMIT
+    on:
+      branch: master
