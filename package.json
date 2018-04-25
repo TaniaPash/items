@@ -20,7 +20,7 @@
   "release": {
     "verifyConditions": [
       "@semantic-release/git",
-      "@semantic-release/github",     
+      "@semantic-release/github",
       {
         "path": "semantic-release-verify-deps",
         "dependencies": false,
