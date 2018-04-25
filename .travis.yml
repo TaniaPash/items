@@ -19,12 +19,13 @@ after_success:
   - npx -p node@8 -c "npm run semantic-release"
 
 before_deploy:
-    - echo $SEM_TAG
     - echo $SEMAN_TAG
+    - echo $SEMANTIC_TAG
+    - echo ${SEMANTIC_TAG}
     - echo "test" 
 deploy:
   - skip_cleanup: true
     provider: script
-    script: bash ./scripts/test.sh $SEMAN_TAG
+    script: bash ./scripts/test.sh $SEMANTIC_TAG
     on:
       branch: master
