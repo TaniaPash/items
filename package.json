@@ -38,7 +38,7 @@
       },
       {
         "path": "@semantic-release/exec",
-        "cmd": "bash ./scripts/semantic.sh"
+        "cmd": "bash ./scripts/semantic.sh ${nextRelease.version}"
       },
       "@semantic-release/git",
       "@semantic-release/github"
