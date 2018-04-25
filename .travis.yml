@@ -16,7 +16,7 @@ after_success:
 
 env:
   - S_TAG=$SEM_TAG
-
+before_deploy: echo $S_TAG
 deploy:
   - skip_cleanup: true
     provider: script
