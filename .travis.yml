@@ -17,6 +17,6 @@ after_success:
 deploy:
   - skip_cleanup: true
     provider: script
-    script: bash ./scripts/test.sh $SEMANTIC_TAG
+    script: bash ./scripts/test.sh $TRAVIS_TAG
     on:
       branch: master
