@@ -15,7 +15,7 @@ script:
   - npm test
 
 after_success:
-  - bash bash ./scripts/semantic.sh
+  - bash ./scripts/semantic.sh
   - echo $SEM_TAG
   - npm config set loglevel warn
   - npx -p node@8 -c "npm run semantic-release"
