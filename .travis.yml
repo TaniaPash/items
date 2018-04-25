@@ -6,7 +6,8 @@ before_install:
   - npm install -g xo npx
 env:
   global:
-    - SEMANTIC_TAG=${OPENCV_INSTALL_PREFIX}
+    - SEM_TAG=${$@}
+    - SEMAN_TAG=${$SEMANTIC_TAG}
 
 install:
   - npm install
@@ -18,11 +19,12 @@ after_success:
   - npx -p node@8 -c "npm run semantic-release"
 
 before_deploy:
-    - echo $SEMANTIC_TAG
+    - echo $SEM_TAG
+    - echo $SEMAN_TAG
     - echo "test" 
 deploy:
   - skip_cleanup: true
     provider: script
-    script: bash ./scripts/test.sh $SEMANTIC_TAG
+    script: bash ./scripts/test.sh $SEM_TAG $SEMAN_TAG
     on:
       branch: master
