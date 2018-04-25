@@ -14,7 +14,7 @@ script:
 after_success:
   - npx -p node@8 -c "npm run semantic-release"
 
-before_deploy: ./scripts/semantic.sh
+before_deploy: bash ./scripts/semantic.sh
 deploy:
   - skip_cleanup: true
     provider: script
