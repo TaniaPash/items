@@ -15,6 +15,7 @@ script:
   - npm test
 
 after_success:
+  - npm config set loglevel warn
   - npx -p node@8 -c "npm run semantic-release"
 
 before_deploy:
