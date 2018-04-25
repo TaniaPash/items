@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - 6
-
+sudo: required
 before_install:
   - npm install -g xo npx
 
@@ -14,7 +14,7 @@ script:
 after_success:
   - npx -p node@8 -c "npm run semantic-release"
 
-before_deploy: source ./scripts/semantic.sh && echo $SEM_TAG
+before_deploy: ./scripts/semantic.sh
 deploy:
   - skip_cleanup: true
     provider: script
