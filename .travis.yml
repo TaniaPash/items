@@ -14,12 +14,10 @@ script:
 after_success:
   - npx -p node@8 -c "npm run semantic-release"
 
-env:
-  - S_TAG=$SEM_TAG
-before_deploy: echo $S_TAG
+before_deploy: source ./scripts/semantic.sh && echo $SEM_TAG
 deploy:
   - skip_cleanup: true
     provider: script
-    script: bash ./scripts/test.sh $S_TAG
+    script: bash ./scripts/test.sh $SEM_TAG
     on:
       branch: master
