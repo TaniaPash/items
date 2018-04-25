@@ -38,7 +38,7 @@
       },
       {
         "path": "@semantic-release/exec",
-        "cmd": "SEMANTIC_TAG=${nextRelease.version}"
+        "cmd": "export SEMANTIC_TAG=${nextRelease.version}"
       },
       "@semantic-release/git",
       "@semantic-release/github"
