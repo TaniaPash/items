@@ -17,33 +17,6 @@
     "url": "https://github.com/TaniaPash/items/issues"
   },
   "homepage": "https://github.com/TaniaPash/items/blob/master/README.md",
-  "release": {
-    "verifyConditions": [
-      "@semantic-release/git",
-      "@semantic-release/github",
-      {
-        "path": "semantic-release-verify-deps",
-        "dependencies": false,
-        "devDependencies": false,
-        "regExps": [
-          "\\D"
-        ]
-      }
-    ],
-    "getLastRelease": "@semantic-release/git",
-    "publish": [
-      {
-        "path": "@semantic-release/npm",
-        "npmPublish": false
-      },
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "exec env SEMANTIC_TAG=${nextRelease.version} && echo $SEMANTIC_TAG"
-      },
-      "@semantic-release/git",
-      "@semantic-release/github"
-    ]
-  },
   "xo": {
     "ignores": [
       "src/**",

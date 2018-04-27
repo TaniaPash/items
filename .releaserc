@@ -1,0 +1,30 @@
+{
+  "release": {
+    "branch": [
+      "tania/semantic-release-editing"
+    ],
+    "verifyConditions": [
+      "@semantic-release/git",
+      "@semantic-release/github",
+      {
+        "path": "semantic-release-verify-deps",
+        "dependencies": true,
+        "devDependencies": false,
+        "regExps": [
+          "(.x)$"
+        ]
+      }
+    ],
+    "getLastRelease": "@semantic-release/git",
+    "publish": [
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github",
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "echo ${nextRelease.version} > VERSION"
+      }
+    ]
+  },
+  "npmPublish": false
+}
