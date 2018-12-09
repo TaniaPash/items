@@ -9,7 +9,7 @@ function RegController($scope, $http, $state, $window, allConstants) {
 		name: ''
 	};
 	$ctrl.saveNewUser = function (newUser) {
-                $http.post(allConstants.apiHostUrl + '/users', $ctrl.newUser)
+                $http.post(allConstants.apiHostUrl + '/auth/signup', $ctrl.newUser)
                 	.then(response => {
                         $state.go('logIn');
                 	}, response => {
